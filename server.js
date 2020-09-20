@@ -40,14 +40,14 @@ app.post('/clypeusmail', (req, res) => {
     transporter.sendMail(mailOptions, (err, data) => {
         if (err) {
             log('Error in sending mail: ', err.message)
-            return res.json({
+            return res.status(500).json({
                 status: 'fail',
                 message: 'Email was not sent',
                 error: err.message
             })
         }
         log('Email sent successfully.')
-        return res.json({
+        return res.status(200).json({
             status: 'success',
             message: 'Email sent successfully'
         })
